@@ -100,16 +100,13 @@ Ground Control Points
 
 Ground control points are useful for correcting distortions in the data and referencing the data to know coordinate systems.
 
-	The format of the GCP file is simple.
+The format of the GCP file is simple.
 
-	 * The header line is a description of a UTM coordinate system, which must be written as a proj4 string. http://spatialreference.org/ is a good resource for finding that information. Please note that currently angular coordinates (like lat/lon) DO NOT work.
-	 * Subsequent lines are the X, Y & Z coordinates, your associated pixels and the image filename:
+	* The first line should contain the name of the projection used for the geo coordinates.
+	* The following lines should contain the data for each ground control point observation. One per line and in the format: <geo_x> <geo_y> <geo_z> <im_x> <im_y> <image_name>
 
-	GCP file format::
 
-	    <proj4 string>
-	    <geo_x> <geo_y> <geo_z> <im_x> <im_y> <image_name>
-	    ...
+WGS84, UTM, and proj4 geospatial coordinates are supported. For more information about the file format read the `Ground Control Points Format Specification <https://github.com/mapillary/OpenSfM/blob/master/doc/source/gcp.rst/>`_.
 
 	e.g. for the Langley dataset::
 
@@ -146,7 +143,7 @@ Create a GCP list that only includes gcp name (this is the label that will be se
 
 Then one can load this GCP list into the interface, load the images, and place each of the GCPs in the image.
 
-`Help edit these docs! <https://github.com/OpenDroneMap/docs/blob/publish/source/using.rst>`_
+`Help edit these docs! <https://github.com/OpenDroneMap/docs/blob/publish/source/tutorials.rst>`_
 
 Using Docker
 ^^^^^^^^^^^^
